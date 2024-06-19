@@ -2,6 +2,9 @@ const locationInput = document.getElementById('locationInput');
 const locationList = document.getElementById('locationList');
 const searchButton = document.getElementById('searchButton');
 
+window.onload = function() {
+    locationInput.value = '';
+}
 
 locationInput.addEventListener('input', function() {
     const input = this.value;
@@ -30,7 +33,8 @@ locationInput.addEventListener('input', function() {
       .then(data => {
         if (data.length > 0) {
           const location = data[0];
-          map.setView([location.lat, location.lon], 13);
+          map.setView([location.lat, location.lon], 12);
+          locationInput.setSelectionRange(0, 0);
         }
       });
   });
