@@ -6,9 +6,7 @@ function geolocate(){
             position => {
                 const { latitude, longitude } = position.coords;
                 map.setView([latitude, longitude], 14);
-                L.marker([latitude, longitude]).addTo(map)
-                    .bindPopup('You are here')
-                    .openPopup();
+                L.marker([latitude, longitude]).addTo(map);
             },
             error => {
                 console.error("Erreur de géolocalisation : ", error);
