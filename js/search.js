@@ -33,7 +33,7 @@ locationInput.addEventListener('input', function() {
       .then(data => {
         if (data.length > 0) {
           const location = data[0];
-          map.setView([location.lat, location.lon], 12);
+          map.setView([location.lat, location.lon], 15);
           locationInput.setSelectionRange(0, 0);
         }
       });
