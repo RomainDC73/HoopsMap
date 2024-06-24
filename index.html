@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
     crossorigin=""></script>
-    <script type="module" src="js/map.js"></script>
+    <script src="js/map.js" defer></script>
     <script src="js/search.js" defer></script>
     <script src="js/geoLocate.js" defer></script>
     <title>Document</title>
@@ -21,7 +21,7 @@
     <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList">
     <datalist id="locationList"></datalist>
     <button id="searchButton">Rechercher</button>
-
+    <ul id="courts-list"></ul>
 
 </body>
 
