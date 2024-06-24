@@ -1,11 +1,10 @@
-// Fonction pour obtenir les terrains de basket-ball
 async function getBasketballCourts() {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
-    const params = new URLSearchParams({
-        limit: 100,
-        refine: 'equip_aps_code:[1101]',
-        refine: 'equip_nature:Découvert'
-    });
+    const params = new URLSearchParams();
+    params.append('limit', 100);
+    params.append('refine', 'equip_aps_code:["1101"]');
+    params.append('refine', 'equip_nature:Découvert');
+    params.append('refine', 'inst_cp:73000')
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
@@ -14,11 +13,19 @@ async function getBasketballCourts() {
         }
         const data = await response.json();
 
-        // Traitement des données
+        // Afficher la réponse JSON complète
+        console.log(data);
+        console.log(response);
+
+        if (!data.records) {
+            throw new Error('La propriété records est indéfinie dans la réponse de l\'API.');
+        }
+
+        // Traitement des données basé sur la structure réelle de la réponse
         const basketballCourts = data.records.map(record => ({
-            name: record.fields.nom,
-            address: record.fields.inst_nom,  // Adapté en fonction des champs de la réponse
-            city: record.fields.inst_com
+            name: record.record.fields.nom,
+            address: record.record.fields.inst_nom,
+            city: record.record.fields.inst_com
         }));
 
         // Afficher ou utiliser les données
