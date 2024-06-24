@@ -15,17 +15,15 @@ async function getBasketballCourts() {
 
         // Afficher la réponse JSON complète
         console.log(data);
-        console.log(response);
+        console.log("L'URL envoyée est : ",response);
 
-        if (!data.records) {
+        if (!data.results) {
             throw new Error('La propriété records est indéfinie dans la réponse de l\'API.');
         }
 
         // Traitement des données basé sur la structure réelle de la réponse
-        const basketballCourts = data.records.map(record => ({
-            name: record.record.fields.nom,
-            address: record.record.fields.inst_nom,
-            city: record.record.fields.inst_com
+        const basketballCourts = data.results.map(record => ({
+            name: record.inst_nom
         }));
 
         // Afficher ou utiliser les données
