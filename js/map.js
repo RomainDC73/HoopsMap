@@ -1,4 +1,4 @@
-const map = L.map('map').setView([51.505, -0.09], 13);
+const map = L.map('map').setView([46.35546, 2.36225], 6);
 
 L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=v9Y0wyS0E3eJC9u7PByU', {
   attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
