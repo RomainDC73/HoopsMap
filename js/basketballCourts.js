@@ -2,7 +2,8 @@ async function getBasketballCourts() {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
     params.append('limit', 100);
-    params.append('refine', 'equip_aps_code:["1101"]');
+    params.append('refine', 'equip_aps_nom:Basket-Ball');
+    // params.append('refine', 'equip_aps_code:["1101"]');
     params.append('refine', 'equip_nature:Découvert');
     params.append('refine', 'inst_cp:73000')
 
@@ -23,7 +24,8 @@ async function getBasketballCourts() {
 
         // Traitement des données basé sur la structure réelle de la réponse
         const basketballCourts = data.results.map(record => ({
-            name: record.inst_nom
+            name: record.inst_nom,
+            access: record.equip_acc_libre,
         }));
 
         // Afficher ou utiliser les données
@@ -41,7 +43,7 @@ function displayBasketballCourts(courts) {
 
     courts.forEach(court => {
         const courtItem = document.createElement('li');
-        courtItem.textContent = `${court.name} - ${court.address}, ${court.city}`;
+        courtItem.textContent = `${court.name} - Accès Libre : ${court.access}`;
         courtsList.appendChild(courtItem);
     });
 }
