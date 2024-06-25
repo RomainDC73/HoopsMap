@@ -26,16 +26,18 @@ locationInput.addEventListener('input', function() {
 });
 
 searchButton.addEventListener('click', function() {
-  const selectedLocation = locationInput.value.split(' (')[0];
+  const selectedLocation = locationInput.value;
   fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${selectedLocation}`)
     .then(response => response.json())
     .then(data => {
       if (data.length > 0) {
         const location = data[0];
-        map.setView([location.lat, location.lon], 15);
+        const latitude = location.lat;
+        const longitude = location.lon;
+        map.setView([latitude, longitude], 15);
         locationInput.setSelectionRange(0, 0);
 
-        showBasketballCourts({ lat: location.lat, lng: location.lon }, 5000);
+        updateBasketballCourts(latitude, longitude);
       }
     });
 });

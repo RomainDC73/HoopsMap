@@ -1,11 +1,10 @@
-async function getBasketballCourts() {
+async function getBasketballCourts(latitude, longitude) {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
     params.append('limit', 100);
     params.append('refine', 'equip_aps_nom:Basket-Ball');
-    // params.append('refine', 'equip_aps_code:["1101"]');
     params.append('refine', 'equip_nature:Découvert');
-    params.append('refine', 'inst_cp:73000')
+    params.append('geofilter.distance', `${latitude},${longitude},10000`);
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
@@ -15,7 +14,7 @@ async function getBasketballCourts() {
         const data = await response.json();
 
         // Afficher la réponse JSON complète
-        console.log(data);
+        // console.log(data);
         console.log("L'URL envoyée est : ",response);
 
         if (!data.results) {
@@ -26,6 +25,7 @@ async function getBasketballCourts() {
         const basketballCourts = data.results.map(record => ({
             name: record.inst_nom,
             access: record.equip_acc_libre,
+            cp: record.inst_cp,
         }));
 
         // Afficher ou utiliser les données
@@ -43,9 +43,14 @@ function displayBasketballCourts(courts) {
 
     courts.forEach(court => {
         const courtItem = document.createElement('li');
-        courtItem.textContent = `${court.name} - Accès Libre : ${court.access}`;
+        courtItem.textContent = `${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`;
         courtsList.appendChild(courtItem);
     });
+}
+
+function updateBasketballCourts(latitude, longitude) {
+    // Appel de la fonction pour obtenir les terrains de basket-ball
+    getBasketballCourts(latitude, longitude);
 }
 
 // Appel de la fonction pour obtenir les terrains de basket-ball
