@@ -7,10 +7,12 @@ function geolocate(){
                 const { latitude, longitude } = position.coords;
                 map.setView([latitude, longitude], 14);
                 L.marker([latitude, longitude]).addTo(map);
+                updateBasketballCourts(latitude, longitude);
             },
             error => {
                 console.error("Erreur de géolocalisation : ", error);
             }
+            
         );
     } else {
         console.error("La géolocalisation n'est pas disponible");
