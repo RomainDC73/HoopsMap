@@ -1,3 +1,5 @@
+let courtsMarkers = [];
+
 async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
@@ -41,11 +43,21 @@ function displayBasketballCourts(courts) {
     const courtsList = document.getElementById('courts-list'); // Assurez-vous d'avoir un élément avec cet ID dans votre HTML
     courtsList.innerHTML = '';
 
+    courtsMarkers.forEach(marker => map.removeLayer(marker));
+    courtsMarkers = [];
+
     courts.forEach(court => {
         const courtItem = document.createElement('li');
         courtItem.textContent = `${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`;
         courtsList.appendChild(courtItem);
+
+        const marker = L.marker([court.latitude, court.longitude])
+            .bindPopup(`<b>${court.name}</b><br>${court.cp} || ''}`)
+            .addTo(map);
+        
+        courtsMarkers.push(marker);
     });
+    console.log('voici le marker : ', marker)
 }
 
 function updateBasketballCourts(latitude, longitude) {
