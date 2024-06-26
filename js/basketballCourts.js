@@ -53,5 +53,4 @@ function updateBasketballCourts(latitude, longitude) {
     getBasketballCourts(latitude, longitude);
 }
 
-// Appel de la fonction pour obtenir les terrains de basket-ball
-getBasketballCourts();
+

@@ -13,6 +13,7 @@ if (navigator.geolocation) {
         
         // Centrer la carte sur les coordonnées de l'utilisateur
         map.setView([lat, lng], 13);
+        updateBasketballCourts(lat, lng);
       },
       function(error) {
         console.log(error);
