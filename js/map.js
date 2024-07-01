@@ -5,6 +5,12 @@ L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=v9Y0wyS0E
   maxZoom: 20
 }).addTo(map);
 
+const searchInThisAreaButton = document.getElementById('searchInThisAreaButton');
+
+map.on('moveend', function() {
+  searchInThisAreaButton.style.display = 'block';
+});
+
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       function(position) {
