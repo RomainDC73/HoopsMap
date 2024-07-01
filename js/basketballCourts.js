@@ -4,10 +4,10 @@ let courtsMarkers = [];
 async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
-    params.append('limit', 2);
+    params.append('limit', 50);
     params.append('refine', 'equip_aps_nom:Basket-Ball');
     params.append('refine', 'equip_nature:Découvert');
-    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 10km)`);
+    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 5km)`);
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
