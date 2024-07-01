@@ -9,6 +9,24 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles
 
 const searchInThisAreaButton = document.getElementById('searchInThisAreaButton');
 
+function debounce(func, wait) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), wait);
+  };
+}
+
+function searchInThisArea() {
+  const center = map.getCenter();
+  updateBasketballCourts(center.lat, center.lng);
+  searchInThisAreaButton.style.display = 'none'; // Hide the button after search
+}
+
+const debouncedSearchInThisArea = debounce(searchInThisArea, 1000);
+
+searchInThisAreaButton.addEventListener('click', debouncedSearchInThisArea);
+
 map.on('moveend', function() {
   searchInThisAreaButton.style.display = 'block';
 });
@@ -31,4 +49,3 @@ if (navigator.geolocation) {
     console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
   }
 
-  

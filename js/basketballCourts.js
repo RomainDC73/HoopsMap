@@ -69,12 +69,5 @@ function updateBasketballCourts(latitude, longitude) {
     getBasketballCourts(latitude, longitude);
 }
 
-function searchInThisArea() {
-    const center = map.getCenter();
-    updateBasketballCourts(center.lat, center.lng);
-    searchInThisAreaButton.style.display = 'none';
-}
-
-searchInThisAreaButton.addEventListener('click', searchInThisArea);
 
 
