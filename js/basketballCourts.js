@@ -1,10 +1,13 @@
+// Stocker les marqueurs des terrains de basket-ball pour pouvoir les supprimer plus tard
+let courtsMarkers = [];
+
 async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
-    params.append('limit', 100);
+    params.append('limit', 50);
     params.append('refine', 'equip_aps_nom:Basket-Ball');
     params.append('refine', 'equip_nature:Découvert');
-    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 10km)`);
+    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 5km)`);
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
@@ -14,8 +17,8 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
         const data = await response.json();
 
         // Afficher la réponse JSON complète
-        // console.log(data);
-        console.log("L'URL envoyée est : ",response);
+        console.log(data);
+        // console.log("L'URL envoyée est : ",response);
 
         if (!data.results) {
             throw new Error('La propriété records est indéfinie dans la réponse de l\'API.');
@@ -26,6 +29,8 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
             name: record.inst_nom,
             access: record.equip_acc_libre,
             cp: record.inst_cp,
+            latitude: record.coordonnees.lat,
+            longitude: record.coordonnees.lon
         }));
 
         // Afficher ou utiliser les données
@@ -41,10 +46,21 @@ function displayBasketballCourts(courts) {
     const courtsList = document.getElementById('courts-list'); // Assurez-vous d'avoir un élément avec cet ID dans votre HTML
     courtsList.innerHTML = '';
 
+    // Supprimer les marqueurs existants
+    courtsMarkers.forEach(marker => map.removeLayer(marker));
+    courtsMarkers = [];
+
     courts.forEach(court => {
         const courtItem = document.createElement('li');
         courtItem.textContent = `${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`;
         courtsList.appendChild(courtItem);
+
+        // Ajouter un marqueur sur la carte pour chaque terrain de basket-ball
+        const marker = L.marker([court.latitude, court.longitude])
+            .bindPopup(`${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`)
+            .addTo(map);
+
+        courtsMarkers.push(marker);
     });
 }
 
