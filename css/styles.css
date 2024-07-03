@@ -55,16 +55,12 @@ h6 {
   isolation: isolate;
 }
 
-
-
 :root {
   --primary: #ffff;
   --secondary: #000000;
   --accent: #CE6C47;
   --main-font: 'Albert Sans', sans-serif;
 }
-
-/* Styles spécifiques aux médias queries */
 
 h1 {
   font-size: 1rem;
@@ -79,12 +75,20 @@ h1 {
   border-top-right-radius: 20px;
 }
 
-#map {
-  height: 500px; /* Exemple : ajustez selon vos besoins */
+
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-#searchInThisAreaButton {
-  display: none;
+.icon-info {
+  color: var(--accent);
+  width: 30px;
+  height: 30px;
+  margin-top: 1em;
+  margin-right: 1em;
 }
 
 #logo {
@@ -93,8 +97,17 @@ h1 {
   padding-top: 1em;
 }
 
+#map {
+  height: 500px; /* Exemple : ajustez selon vos besoins */
+}
+
+#searchInThisAreaButton {
+  display: none;
+}
+
 /* Mobile First */
 @media (max-width: 480px) {
+  /* Ajoutez des styles spécifiques pour les mobiles si nécessaire */
 
 }
 

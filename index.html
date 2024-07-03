@@ -14,15 +14,26 @@
     <script src="js/basketballCourts.js" defer></script>
     <script src="js/search.js" defer></script>
     <script src="js/geolocate.js" defer></script>
+    <script src="js/icon.js" defer></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+
 
     <title>Document</title>
 </head>
 <body>
     <header>
-        <div id="logo">
-        <img src="docs/img/Hoops_Map_Logo.png" alt="logo">
+        <div class="logo-container">
+            <div id="logo">
+                <img src="docs/img/Hoops_Map_Logo.png" alt="logo">
+            </div>
+            <div id="info">
+                <i class="icon-info" data-feather="info"></i>
+            </div>
         </div>
         <h1>Trouve ton playground à côté de chez toi !</h1>
+
+
     </header>
     <div id="map"></div>
     <button id="geoLocateButton">Localiser</button>
@@ -31,7 +42,6 @@
     <button id="searchButton">Rechercher</button>
     <button id="searchInThisAreaButton">Rechercher dans cette zone</button>
     <ul id="courts-list"></ul>
-
 </body>
 
 
