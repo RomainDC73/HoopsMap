@@ -1,7 +1,92 @@
+/* Josh's Custom CSS Reset - https://www.joshwcomeau.com/css/custom-css-reset/ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  max-width: 100%; /* do not display:block for img! */
+}
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+#root,
+#__next {
+  isolation: isolate;
+}
+
+@import url(https://fonts.bunny.net/css?family=karla:400,800);
+
+:root {
+  --primary: #ffff;
+  --secondary: #000000;
+  --accent: #CE6C47;
+  --main-font: 'Karla', sans-serif;
+}
+
+
+/* Style de base */
+body {
+  font-family: var(--main-font);
+  background-color: var(--primary);
+  color: var(--secondary);
+  margin: 0;
+  padding: 0;
+}
+
 #map {
-    height: 500px;
-  }
+  height: 500px;
+}
 
 #searchInThisAreaButton {
-    display: none;
+  display: none;
+}
+
+
+/* Media Queries pour rendre le site responsive */
+@media (max-width: 1200px) {
+  body {
+      background-color: #2980b9; /* Bleu plus foncé */
   }
+
+}
+
+@media (max-width: 768px) {
+  body {
+      background-color: #2471a3; /* Bleu encore plus foncé */
+  }
+
+}
+
+@media (max-width: 480px) {
+  body {
+      background-color: #1f618d; /* Bleu le plus foncé */
+  }
+
+}
