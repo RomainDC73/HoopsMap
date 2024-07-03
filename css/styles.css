@@ -1,19 +1,30 @@
+@import url(https://fonts.bunny.net/css?family=albert-sans:300,400,800);
+
 /* Josh's Custom CSS Reset - https://www.joshwcomeau.com/css/custom-css-reset/ */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 * {
   margin: 0;
 }
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--main-font);
+  background-color: var(--primary);
+  color: var(--secondary);
+  margin: 0;
+  padding: 0;
 }
+
 img {
-  max-width: 100%; /* do not display:block for img! */
+  max-width: 100%;
 }
+
 picture,
 video,
 canvas,
@@ -21,12 +32,14 @@ svg {
   display: block;
   max-width: 100%;
 }
+
 input,
 button,
 textarea,
 select {
   font: inherit;
 }
+
 p,
 h1,
 h2,
@@ -36,57 +49,82 @@ h5,
 h6 {
   overflow-wrap: break-word;
 }
+
 #root,
 #__next {
   isolation: isolate;
 }
 
-@import url(https://fonts.bunny.net/css?family=karla:400,800);
-
 :root {
   --primary: #ffff;
   --secondary: #000000;
   --accent: #CE6C47;
-  --main-font: 'Karla', sans-serif;
+  --main-font: 'Albert Sans', sans-serif;
+}
+
+h1 {
+  font-size: 1rem;
+  color: var(--primary);
+  font-weight: 400;
+  white-space: nowrap;
+  background-color: var(--accent);
+  width: 80%;
+  margin: 0 0 1em 0;
+  padding: 0.5em;
+  padding-left: 1.5em;
+  border-top-right-radius: 20px;
 }
 
 
-/* Style de base */
-body {
-  font-family: var(--main-font);
-  background-color: var(--primary);
-  color: var(--secondary);
-  margin: 0;
-  padding: 0;
+
+.logo-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.icon-info {
+  color: var(--accent);
+  width: 30px;
+  height: 30px;
+  margin-top: 1.5em;
+  margin-right: 1.5em;
+}
+
+#logo {
+  width: 250px; /* Exemple : ajustez selon vos besoins */
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+.h1-container {
+  display: flex;
+  flex-direction: row;
 }
 
 #map {
-  height: 500px;
+  height: 500px; /* Exemple : ajustez selon vos besoins */
 }
 
 #searchInThisAreaButton {
   display: none;
 }
 
-
-/* Media Queries pour rendre le site responsive */
-@media (max-width: 1200px) {
-  body {
-      background-color: #2980b9; /* Bleu plus foncé */
-  }
-
-}
-
-@media (max-width: 768px) {
-  body {
-      background-color: #2471a3; /* Bleu encore plus foncé */
-  }
-
-}
-
+/* Mobile First */
 @media (max-width: 480px) {
-  body {
-      background-color: #1f618d; /* Bleu le plus foncé */
-  }
+  /* Ajoutez des styles spécifiques pour les mobiles si nécessaire */
 
+}
+
+/* Tablettes et écrans plus grands */
+@media (min-width: 481px) {
+
+}
+
+/* Ordinateurs de bureau et écrans larges */
+@media (min-width: 769px) {
+  /* Ajoutez des styles spécifiques pour les écrans larges si nécessaire */
+  h1 {
+    width: 50%; /* Exemple : réduction de la largeur pour tablettes */
+  }
 }
