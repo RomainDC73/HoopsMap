@@ -75,8 +75,6 @@ h1 {
   border-top-right-radius: 20px;
 }
 
-
-
 .logo-container {
   display: flex;
   flex-direction: row;
@@ -102,6 +100,22 @@ h1 {
   flex-direction: row;
 }
 
+.info-block {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.info-block.show {
+  right: 0;
+}
+
 #map {
   height: 500px; /* Exemple : ajustez selon vos besoins */
 }
@@ -113,12 +127,16 @@ h1 {
 /* Mobile First */
 @media (max-width: 480px) {
   /* Ajoutez des styles spécifiques pour les mobiles si nécessaire */
-
+  .info-block {
+    width: 100%;
+  }
 }
 
 /* Tablettes et écrans plus grands */
 @media (min-width: 481px) {
-
+  .info-block {
+    width: 60%;
+  }
 }
 
 /* Ordinateurs de bureau et écrans larges */
@@ -126,5 +144,9 @@ h1 {
   /* Ajoutez des styles spécifiques pour les écrans larges si nécessaire */
   h1 {
     width: 50%; /* Exemple : réduction de la largeur pour tablettes */
+  }
+
+  .info-block {
+    width: 60%;
   }
 }
