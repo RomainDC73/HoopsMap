@@ -12,6 +12,8 @@ closeInfo.addEventListener('click', () => {
     infoBlock.classList.remove('show');
 });
 
+
+
 document.addEventListener('click', (event) => {
     if (infoBlock.classList.contains('show') && event.target !== iconInfo && event.target !== infoBlock) {
         infoBlock.classList.remove('show');
