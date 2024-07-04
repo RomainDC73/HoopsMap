@@ -116,6 +116,21 @@ h1 {
   right: 0;
 }
 
+.info-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-footer img {
+  opacity: 0.1;
+  transform: rotate(-10deg) scale(1.2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%; /* Ajustez la taille selon vos besoins */
+  pointer-events: none; 
+}
+
 #map {
   height: 500px;
   width: 100%;

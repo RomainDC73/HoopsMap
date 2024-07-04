@@ -7,7 +7,7 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
     params.append('limit', 100);
     params.append('refine', 'equip_aps_nom:Basket-Ball');
     params.append('refine', 'equip_nature:Découvert');
-    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 10km)`);
+    params.append('where', `within_distance(coordonnees, GEOM'POINT(${longitude} ${latitude})', 20km)`);
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
