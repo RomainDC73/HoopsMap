@@ -75,8 +75,6 @@ h1 {
   border-top-right-radius: 20px;
 }
 
-
-
 .logo-container {
   display: flex;
   flex-direction: row;
@@ -102,8 +100,62 @@ h1 {
   flex-direction: row;
 }
 
+.info-block {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+  transition: right 0.3s ease;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.info-block.show {
+  right: 0;
+}
+
+.info-container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
+
+.info-footer img {
+  opacity: 0.1;
+  transform: rotate(-10deg) scale(1.2);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%; /* Ajustez la taille selon vos besoins */
+  pointer-events: none; 
+}
+
+.icon-close {
+  margin-bottom: 2em;
+  color: var(--accent);
+  width: 30px;
+  height: 30px;
+}
+
+.info-header h2 {
+  color: var(--accent);
+  margin-bottom: 1em;
+}
+
+.info-content p {
+  margin-bottom: 0.5em;
+}
+
+.info-content a {
+  color: var(--accent);
+}
+
 #map {
-  height: 500px; /* Exemple : ajustez selon vos besoins */
+  height: 500px;
+  width: 100%;
+  z-index: 0;
 }
 
 #searchInThisAreaButton {
@@ -113,12 +165,16 @@ h1 {
 /* Mobile First */
 @media (max-width: 480px) {
   /* Ajoutez des styles spécifiques pour les mobiles si nécessaire */
-
+  .info-block {
+    width: 100%;
+  }
 }
 
 /* Tablettes et écrans plus grands */
 @media (min-width: 481px) {
-
+  .info-block {
+    width: 70%;
+  }
 }
 
 /* Ordinateurs de bureau et écrans larges */
@@ -126,5 +182,14 @@ h1 {
   /* Ajoutez des styles spécifiques pour les écrans larges si nécessaire */
   h1 {
     width: 50%; /* Exemple : réduction de la largeur pour tablettes */
+  }
+
+  .info-block {
+    width: 50%;
+  }
+
+  .info-footer img {
+    bottom: -100px;
+
   }
 }
