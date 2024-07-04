@@ -119,6 +119,7 @@ h1 {
 .info-container {
   display: flex;
   flex-direction: column;
+  padding: 2em;
 }
 
 .info-footer img {
@@ -129,6 +130,26 @@ h1 {
   right: 0;
   width: 100%; /* Ajustez la taille selon vos besoins */
   pointer-events: none; 
+}
+
+.icon-close {
+  margin-bottom: 2em;
+  color: var(--accent);
+  width: 30px;
+  height: 30px;
+}
+
+.info-header h2 {
+  color: var(--accent);
+  margin-bottom: 1em;
+}
+
+.info-content p {
+  margin-bottom: 0.5em;
+}
+
+.info-content a {
+  color: var(--accent);
 }
 
 #map {
@@ -152,7 +173,7 @@ h1 {
 /* Tablettes et écrans plus grands */
 @media (min-width: 481px) {
   .info-block {
-    width: 60%;
+    width: 70%;
   }
 }
 
