@@ -43,18 +43,12 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
 
 // Fonction pour afficher les terrains de basket-ball (exemple)
 function displayBasketballCourts(courts) {
-    const courtsList = document.getElementById('courts-list'); // Assurez-vous d'avoir un élément avec cet ID dans votre HTML
-    courtsList.innerHTML = '';
 
     // Supprimer les marqueurs existants
     courtsMarkers.forEach(marker => map.removeLayer(marker));
     courtsMarkers = [];
 
     courts.forEach(court => {
-        const courtItem = document.createElement('li');
-        courtItem.textContent = `${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`;
-        courtsList.appendChild(courtItem);
-
         // Ajouter un marqueur sur la carte pour chaque terrain de basket-ball
         const marker = L.marker([court.latitude, court.longitude])
             .bindPopup(`${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`)
