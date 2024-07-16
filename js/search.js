@@ -6,6 +6,7 @@ window.onload = function() {
   locationInput.value = '';
 }
 
+
 locationInput.addEventListener('input', function() {
   const input = this.value;
   if (input.length > 2) {
@@ -16,7 +17,7 @@ locationInput.addEventListener('input', function() {
         locationList.innerHTML = '';
         data.forEach(location => {
           const option = document.createElement('option');
-          option.value = `${location.display_name})`;
+          option.value = `${location.display_name.split(',').slice(0, 2).join(',')}`;
           locationList.appendChild(option);
         });
       });
@@ -39,5 +40,6 @@ searchButton.addEventListener('click', function() {
 
         updateBasketballCourts(latitude, longitude);
       }
+      locationList.innerHTML = '';
     });
 });
