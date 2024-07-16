@@ -185,11 +185,13 @@ main {
   padding: 0.5em;
   border-radius: 4px;
   left: 50%;
-  bottom: 2%;
-  transform: translate(-50%, -50%);
+  bottom: 10%;
+  transform: translate(-50%);
+  width: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -212,6 +214,13 @@ main {
 #searchButton {
   background-color: white;
   border-radius: 10px;
+}
+
+#locationInput {
+  flex-grow: 1;
+  margin: 0 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
 }
 
 /* Mobile First */
