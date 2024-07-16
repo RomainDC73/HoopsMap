@@ -1,5 +1,4 @@
 const geoLocateButton = document.getElementById('geoLocateButton');
-
 function geolocate(){
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
@@ -8,6 +7,7 @@ function geolocate(){
                 map.setView([latitude, longitude], 14);
                 L.marker([latitude, longitude]).addTo(map);
                 updateBasketballCourts(latitude, longitude);
+                locationInput.value = '';
             },
             error => {
                 console.error("Erreur de géolocalisation : ", error);
