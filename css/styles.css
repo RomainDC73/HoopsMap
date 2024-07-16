@@ -213,7 +213,7 @@ main {
 #geoLocateButton,
 #searchButton {
   background-color: white;
-  border-radius: 10px;
+  border: 1px solid white;
 }
 
 #locationInput {
@@ -221,6 +221,10 @@ main {
   margin: 0 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
+}
+
+#locationList {
+  background-color: #f0f;
 }
 
 /* Mobile First */
