@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     document.addEventListener('click', (event) => {
-        console.log('Document clicked');
         if (infoBlock.classList.contains('show') && event.target !== iconInfo && !infoBlock.contains(event.target)) {
             infoBlock.classList.remove('show');
         }

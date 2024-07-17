@@ -1,6 +1,5 @@
 const locationInput = document.getElementById('locationInput');
-const locationList = document.getElementById('locationList');
-const searchButton = document.getElementById('searchButton');
+const customDropdown = document.getElementById('customDropdown');
 
 window.onload = function() {
   locationInput.value = '';
@@ -9,25 +8,31 @@ window.onload = function() {
 locationInput.addEventListener('input', function() {
   const input = this.value;
   if (input.length > 2) {
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${input}`)
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${input}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        locationList.innerHTML = '';
+        customDropdown.innerHTML = '';
         data.forEach(location => {
-          const option = document.createElement('option');
-          option.value = `${location.display_name})`;
-          locationList.appendChild(option);
+          const option = document.createElement('div');
+          option.textContent = `${location.display_name.split(',').slice(0, 2).join(',')}`;
+          option.addEventListener('click', function() {
+            locationInput.value = option.textContent;
+            customDropdown.style.display = 'none';
+            searchLocation(locationInput.value); // Trigger search
+          });
+          customDropdown.appendChild(option);
         });
+        customDropdown.style.display = 'block';
       });
   } else {
-    locationList.innerHTML = '';
+    customDropdown.innerHTML = '';
+    customDropdown.style.display = 'none';
   }
 });
 
-searchButton.addEventListener('click', function() {
-  const selectedLocation = locationInput.value;
-  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${selectedLocation}`)
+function searchLocation(location) {
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${location}`)
     .then(response => response.json())
     .then(data => {
       if (data.length > 0) {
@@ -39,5 +44,13 @@ searchButton.addEventListener('click', function() {
 
         updateBasketballCourts(latitude, longitude);
       }
+      customDropdown.innerHTML = '';
+      customDropdown.style.display = 'none';
     });
+}
+
+document.addEventListener('click', function(event) {
+  if (!customDropdown.contains(event.target) && event.target !== locationInput) {
+    customDropdown.style.display = 'none';
+  }
 });

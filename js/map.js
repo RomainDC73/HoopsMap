@@ -25,27 +25,8 @@ function searchInThisArea() {
 
 const debouncedSearchInThisArea = debounce(searchInThisArea, 1000);
 
-searchInThisAreaButton.addEventListener('click', debouncedSearchInThisArea);
+map.on('moveend', debouncedSearchInThisArea);
 
-map.on('moveend', function() {
-  searchInThisAreaButton.style.display = 'block';
-});
 
-if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
-      function(position) {
-        var lat = position.coords.latitude;
-        var lng = position.coords.longitude;
-        
-        // Centrer la carte sur les coordonnées de l'utilisateur
-        map.setView([lat, lng], 13);
-        updateBasketballCourts(lat, lng);
-      },
-      function(error) {
-        console.log(error);
-      }
-    );
-  } else {
-    console.log("La géolocalisation n'est pas prise en charge par ce navigateur.");
-  }
+
 
