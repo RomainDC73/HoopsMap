@@ -6,9 +6,9 @@ window.onload = function() {
 }
 
 locationInput.addEventListener('input', function() {
-  const input = this.value;
+  const input = sanitizeInput(this.value);
   if (input.length > 2) {
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${input}`)
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${encodeURIComponent(input)}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -32,7 +32,8 @@ locationInput.addEventListener('input', function() {
 });
 
 function searchLocation(location) {
-  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${location}`)
+  const sanitizedLocation = sanitizeInput(location);
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${encodeURIComponent(sanitizedLocation)}`)
     .then(response => response.json())
     .then(data => {
       if (data.length > 0) {
@@ -54,3 +55,8 @@ document.addEventListener('click', function(event) {
     customDropdown.style.display = 'none';
   }
 });
+
+function sanitizeInput(input) {
+  // Fonction de nettoyage basique, adaptée à vos besoins spécifiques
+  return input.replace(/[^\w\s,-]/gi, ''); // Retire tout caractère non-alphanumérique sauf espace, virgule et tiret
+}
