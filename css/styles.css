@@ -191,7 +191,6 @@ main {
   transform: translate(-50%);
   width: 90%;
   display: flex;
-  flex-direction: row;
   align-items: center;
   gap: 10px;
 }
@@ -226,6 +225,7 @@ main {
   display: block;
   cursor: pointer;
 }
+
 .dropdown-content div:hover {
   background-color: #f1f1f1;
 }
@@ -240,28 +240,17 @@ main {
   height: 24px;
 }
 
-#searchInThisAreaButton {
-  display: none;
-  margin-top: 5px;
-}
-
-#geoLocateButton,
-#searchButton {
+#geoLocateButton {
   background-color: white;
   border: 1px solid white;
 }
 
 #locationInput {
   flex-grow: 1;
-  margin: 0 10px;
+  margin: 0 50 0 10px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
-
-#locationList {
-  background-color: #f0f;
-}
-
 
 /* Tablettes et écrans plus grands */
 @media (min-width: 481px) {

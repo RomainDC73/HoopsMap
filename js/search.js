@@ -1,6 +1,5 @@
 const locationInput = document.getElementById('locationInput');
 const customDropdown = document.getElementById('customDropdown');
-const searchButton = document.getElementById('searchButton');
 
 window.onload = function() {
   locationInput.value = '';
@@ -20,6 +19,7 @@ locationInput.addEventListener('input', function() {
           option.addEventListener('click', function() {
             locationInput.value = option.textContent;
             customDropdown.style.display = 'none';
+            searchLocation(locationInput.value); // Trigger search
           });
           customDropdown.appendChild(option);
         });
@@ -31,9 +31,8 @@ locationInput.addEventListener('input', function() {
   }
 });
 
-searchButton.addEventListener('click', function() {
-  const selectedLocation = locationInput.value;
-  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${selectedLocation}`)
+function searchLocation(location) {
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${location}`)
     .then(response => response.json())
     .then(data => {
       if (data.length > 0) {
@@ -48,7 +47,7 @@ searchButton.addEventListener('click', function() {
       customDropdown.innerHTML = '';
       customDropdown.style.display = 'none';
     });
-});
+}
 
 document.addEventListener('click', function(event) {
   if (!customDropdown.contains(event.target) && event.target !== locationInput) {
