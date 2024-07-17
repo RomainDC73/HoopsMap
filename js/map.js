@@ -25,11 +25,8 @@ function searchInThisArea() {
 
 const debouncedSearchInThisArea = debounce(searchInThisArea, 1000);
 
-searchInThisAreaButton.addEventListener('click', debouncedSearchInThisArea);
+map.on('moveend', debouncedSearchInThisArea);
 
-map.on('moveend', function() {
-  searchInThisAreaButton.style.display = 'block';
-});
 
 
 
