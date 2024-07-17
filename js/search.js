@@ -9,7 +9,7 @@ window.onload = function() {
 locationInput.addEventListener('input', function() {
   const input = this.value;
   if (input.length > 2) {
-    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${input}`)
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${input}`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -33,7 +33,7 @@ locationInput.addEventListener('input', function() {
 
 searchButton.addEventListener('click', function() {
   const selectedLocation = locationInput.value;
-  fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${selectedLocation}`)
+  fetch(`https://nominatim.openstreetmap.org/search?format=json&countrycodes=FR&q=${selectedLocation}`)
     .then(response => response.json())
     .then(data => {
       if (data.length > 0) {
