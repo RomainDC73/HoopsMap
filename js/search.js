@@ -1,11 +1,10 @@
 const locationInput = document.getElementById('locationInput');
-const locationList = document.getElementById('locationList');
+const customDropdown = document.getElementById('customDropdown');
 const searchButton = document.getElementById('searchButton');
 
 window.onload = function() {
   locationInput.value = '';
 }
-
 
 locationInput.addEventListener('input', function() {
   const input = this.value;
@@ -14,15 +13,21 @@ locationInput.addEventListener('input', function() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        locationList.innerHTML = '';
+        customDropdown.innerHTML = '';
         data.forEach(location => {
-          const option = document.createElement('option');
-          option.value = `${location.display_name.split(',').slice(0, 2).join(',')}`;
-          locationList.appendChild(option);
+          const option = document.createElement('div');
+          option.textContent = `${location.display_name.split(',').slice(0, 2).join(',')}`;
+          option.addEventListener('click', function() {
+            locationInput.value = option.textContent;
+            customDropdown.style.display = 'none';
+          });
+          customDropdown.appendChild(option);
         });
+        customDropdown.style.display = 'block';
       });
   } else {
-    locationList.innerHTML = '';
+    customDropdown.innerHTML = '';
+    customDropdown.style.display = 'none';
   }
 });
 
@@ -40,6 +45,13 @@ searchButton.addEventListener('click', function() {
 
         updateBasketballCourts(latitude, longitude);
       }
-      locationList.innerHTML = '';
+      customDropdown.innerHTML = '';
+      customDropdown.style.display = 'none';
     });
+});
+
+document.addEventListener('click', function(event) {
+  if (!customDropdown.contains(event.target) && event.target !== locationInput) {
+    customDropdown.style.display = 'none';
+  }
 });

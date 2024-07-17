@@ -31,7 +31,7 @@
                 <h2>Informations</h2>
             </header>
             <div class="info-content">
-                <p><b>Hoops Map est une application qui vous permet de trouver un playground de basket à côté de chez vous, en France</b>
+                <p><b>Hoops Map est une carte web qui vous permet de trouver un playground de basket à côté de chez vous, en France.</b>
                 </p>
                 <p>
                 Vous pouvez rechercher un playground en entrant une ville ou un code postal dans la barre de recherche ou en cliquant sur le bouton "Localiser" pour trouver les playgrounds à proximité de votre position actuelle.
@@ -64,12 +64,11 @@
             <div id="map"></div>
             <div class="search-container">
                 <button id="geoLocateButton"><i class="icon-geoloc" data-feather="compass"></i></button>
-                <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList">
-                <datalist id="locationList"></datalist>
+                <div class="input-container">
+                    <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList">
+                    <div id="customDropdown" class="dropdown-content"></div>
+                </div>
                 <button id="searchButton"><i class="icon-geoloc" data-feather="search"></i></button>
-            </div>
-            <div class="new-search-zone-container">
-                <button id="searchInThisAreaButton">Rechercher dans cette zone</button>
             </div>
         </div>
         </main>
