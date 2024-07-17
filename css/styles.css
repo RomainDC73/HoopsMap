@@ -111,12 +111,14 @@ h1 {
   top: 0;
   right: -100%;
   height: 100%;
+  width: 100%;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: right 0.3s ease;
   overflow-y: auto;
-  z-index: 1000;
+  z-index: 2000;
 }
+
 
 .info-block.show {
   right: 0;
@@ -240,13 +242,6 @@ main {
   background-color: #f0f;
 }
 
-/* Mobile First */
-@media (max-width: 480px) {
-  /* Ajoutez des styles spécifiques pour les mobiles si nécessaire */
-  .info-block {
-    width: 100%;
-  }
-}
 
 /* Tablettes et écrans plus grands */
 @media (min-width: 481px) {
