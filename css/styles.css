@@ -87,7 +87,7 @@ h1 {
   justify-content: space-between;
 }
 
-.icon-info {
+.info-icon {
   color: var(--accent);
   width: 30px;
   height: 30px;
@@ -140,7 +140,7 @@ h1 {
   pointer-events: none; 
 }
 
-.icon-close {
+.close-icon {
   margin-bottom: 2em;
   color: var(--accent);
   width: 30px;
@@ -177,6 +177,26 @@ main {
 #map {
   flex: 1;
   width: 100%;
+}
+
+.show-geoloc-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  color: var(--accent); /* Définir la couleur ici */
+  width: 50px; /* Taille de l'icône */
+  height: 50px; /* Taille de l'icône */
+}
+
+.show-geoloc-icon svg {
+  background-color: white; /* Fond blanc pour le SVG */
+  border-radius: 50%; /* Pour arrondir le fond blanc */
+  box-sizing: border-box;
+  stroke-width: 2px; /* Épaisseur du trait */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-container {
@@ -242,9 +262,9 @@ main {
   margin-right: 5px;
 }
 
-.icon-geoloc {
-  width: 24px;
-  height: 24px;
+.search-geoloc-icon {
+  width: 30px;
+  height: 30px;
 }
 
 #geoLocateButton {

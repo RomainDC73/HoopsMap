@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const iconInfo = document.querySelector('.icon-info');
+    const iconInfo = document.querySelector('.info-icon');
     const infoBlock = document.querySelector('.info-block');
-    const closeInfo = document.querySelector('.icon-close');
+    const closeInfo = document.querySelector('.close-icon');
 
     if (iconInfo) {
         iconInfo.addEventListener('click', (event) => {
