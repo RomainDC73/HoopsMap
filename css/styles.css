@@ -190,9 +190,13 @@ main {
 }
 
 .show-geoloc-icon svg {
+  background-color: white; /* Fond blanc pour le SVG */
+  border-radius: 50%; /* Pour arrondir le fond blanc */
+  box-sizing: border-box;
   stroke-width: 2px; /* Épaisseur du trait */
-  width: 100%;
-  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .search-container {

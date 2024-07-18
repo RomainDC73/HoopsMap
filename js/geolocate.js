@@ -29,7 +29,11 @@ function geolocate() {
 
       },
       error => {
-        console.error("Erreur de géolocalisation : ", error);
+        if (error.code === 1){
+            alert("Vous avez refusé la géolocalisation. Vous pouvez activer la géolocalisation dans les paramètres de votre navigateur.");
+        } else {
+            console.error("Erreur de géolocalisation : ", error);
+        }
       }
     );
   } else {
