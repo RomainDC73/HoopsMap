@@ -267,6 +267,11 @@ main {
   height: 30px;
 }
 
+.search-geoloc-icon:hover {
+  cursor: pointer;
+  color: var(--accent)
+}
+
 #geoLocateButton {
   background-color: white;
   border: 1px solid white;
