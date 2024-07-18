@@ -47,11 +47,25 @@ function displayBasketballCourts(courts) {
     // Supprimer les marqueurs existants
     courtsMarkers.forEach(marker => map.removeLayer(marker));
     courtsMarkers = [];
-
     courts.forEach(court => {
+
+        let accessText;
+        if (court.access === 'true') {
+            accessText = 'Oui';
+        } else if (court.access === 'false') {
+            accessText = 'Non';
+        } else {
+            accessText = 'Non renseigné';
+        }
         // Ajouter un marqueur sur la carte pour chaque terrain de basket-ball
+
+        const courtsContent = ` 
+            <div class="courts-content">
+                <h2>${court.name}</h2>
+                <p><b>Accès Libre :</b> ${accessText}</p>
+            </div>`;
         const marker = L.marker([court.latitude, court.longitude])
-            .bindPopup(`${court.name} - Accès Libre : ${court.access} - Code Postal : ${court.cp}`)
+            .bindPopup(courtsContent)
             .addTo(map);
 
         courtsMarkers.push(marker);
