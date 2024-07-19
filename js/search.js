@@ -44,7 +44,7 @@ function searchLocation(location) {
         locationInput.setSelectionRange(0, 0);
 
         updateBasketballCourts(latitude, longitude);
-        searchOfGeolocateTriggered = true;
+        searchOrGeolocateTriggered = true;
       }
       customDropdown.innerHTML = '';
       customDropdown.style.display = 'none';
