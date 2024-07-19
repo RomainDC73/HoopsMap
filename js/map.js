@@ -7,8 +7,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles
   zoomOffset: -1
 }).addTo(map);
 
-const searchInThisAreaButton = document.getElementById('searchInThisAreaButton');
-
 function debounce(func, wait) {
   let timeout;
   return function(...args) {
@@ -20,13 +18,8 @@ function debounce(func, wait) {
 function searchInThisArea() {
   const center = map.getCenter();
   updateBasketballCourts(center.lat, center.lng);
-  searchInThisAreaButton.style.display = 'none'; // Hide the button after search
 }
 
 const debouncedSearchInThisArea = debounce(searchInThisArea, 1000);
 
 map.on('moveend', debouncedSearchInThisArea);
-
-
-
-
