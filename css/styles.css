@@ -115,7 +115,7 @@ h1 {
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: right 0.3s ease;
-  overflow-y: auto;
+  overflow-y: hidden;
   z-index: 2000;
 }
 
