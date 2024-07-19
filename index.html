@@ -57,10 +57,12 @@
     <main>
         <div class="map-container">
             <div id="map" role="region" aria-label="Carte des playgrounds de basket"></div>
+            <div class="search-label-container">
+                <label for="locationInput" class="search-label">Rechercher un playground</label>
+            </div>
             <div class="search-container" role="search">
                 <button id="geoLocateButton" aria-label="Localiser"><i class="search-geoloc-icon" data-feather="compass"></i></button>
                 <div class="input-container">
-                    <label for="locationInput" class="sr-only">Rechercher un playground</label>
                     <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList" aria-autocomplete="list">
                     <div id="customDropdown" class="dropdown-content"></div>
                 </div>

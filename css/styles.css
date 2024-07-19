@@ -208,6 +208,25 @@ main {
   fill: white;
 }
 
+.search-label-container {
+  position: absolute; /* Position it absolutely to align it above the search container */
+  left: 35%; /* Center horizontally */
+  bottom: calc(15% + 3em); /* Position it above the search container */
+  transform: translateX(-50%); /* Center horizontally */
+  width: 60%; /* Same width as search-container */
+  z-index: 1000; /* Place it above the search container */
+}
+
+.search-label {
+  display: block;
+  font-size: 1rem; /* Adjust font size as needed */
+  color: #fff; /* White text color */
+  background-color: var(--accent); /* Background color from CSS variable */
+  padding: 0.5em 1em; /* Padding around the label text */
+  border-radius: 4px; /* Rounded corners for the background */
+  text-align: left; /* Align text to the left */
+}
+
 .search-container {
   position: absolute;
   z-index: 1000;
@@ -318,10 +337,20 @@ main {
   .search-container {
     width: 50%;
   }
+
+  .search-label-container {
+    left: 40%; /* Center horizontally */
+    width: 30%; /* Same width as search-container */
+  }
 }
 
 @media (min-width: 1024px) {
   .search-container {
     width: 40%;
+  }
+
+  .search-label-container {
+    left: 45%; /* Center horizontally */
+    width: 30%; /* Same width as search-container */
   }
 }
