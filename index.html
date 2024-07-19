@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hoops Map est une carte web qui vous permet de trouver un playground de basket à côté de chez vous, en France.">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
@@ -16,36 +17,22 @@
     <script src="js/geolocate.js" defer></script>
     <script src="js/icon.js" defer></script>
     <script src="js/info.js" defer></script>
-
     <script src="https://unpkg.com/feather-icons"></script>
-    
-
-
-    <title>Document</title>
+    <title>Hoops Map - Trouvez un playground de basket près de chez vous</title>
 </head>
 <body>
-    <div class="info-block">
+    <div class="info-block" role="dialog" aria-labelledby="info-title">
         <div class="info-container">
-            <i class="close-icon" data-feather="chevron-right"></i>
+            <button class="close-icon" aria-label="Fermer" data-feather="chevron-right"></button>
             <header class="info-header">
-                <h2>Informations</h2>
+                <h2 id="info-title">Informations</h2>
             </header>
             <div class="info-content">
-                <p><b>Hoops Map est une carte web qui vous permet de trouver un playground de basket à côté de chez vous, en France.</b>
-                </p>
-                <p>
-                Vous pouvez rechercher un playground en entrant une ville ou un code postal dans la barre de recherche ou en cliquant sur le bouton "Localiser" pour trouver les playgrounds à proximité de votre position actuelle.
-                </p>
-                <p>
-                <b>Accès libre</b><br>
-                Sur chaque playground vous verrez la mention accès libre. Si oui c'est que c'est open, si non je les affiche tout de même, quelques fois il y a quand même moyen de rentrer... 😉
-                </p>
-                <p>
-                Les données sont fournies par la base de données du Ministère des Sports et sont mises à jour régulièrement par cette structure.
-                </p>
-                <p>
-                <a href="https://datacollecte.equipements.sports.gouv.fr/declaration" target="_blank">Si vous souhaitez ajouter un playground, vous pouvez le faire ici.</a> 
-                </p>
+                <p><b>Hoops Map est une carte web qui vous permet de trouver un playground de basket à côté de chez vous, en France.</b></p>
+                <p>Vous pouvez rechercher un playground en entrant une ville ou un code postal dans la barre de recherche ou en cliquant sur le bouton "Localiser" pour trouver les playgrounds à proximité de votre position actuelle.</p>
+                <p><b>Accès libre</b><br>Sur chaque playground vous verrez la mention accès libre. Si oui c'est que c'est open, si non je les affiche tout de même, quelques fois il y a quand même moyen de rentrer... 😉</p>
+                <p>Les données sont fournies par la base de données du Ministère des Sports et sont mises à jour régulièrement par cette structure.</p>
+                <p><a href="https://datacollecte.equipements.sports.gouv.fr/declaration" target="_blank">Si vous souhaitez ajouter un playground, vous pouvez le faire ici.</a></p>
             </div>
         </div>
         <div class="info-footer">
@@ -62,25 +49,23 @@
                 <img src="docs/img/Hoops_Map_Logo.png" alt="Hoops Map logo">
             </div>
             <div id="info">
-                <i class="info-icon" data-feather="info"></i>
+                <button aria-label="Informations" data-feather="info" class="info-icon"></button>
             </div>
         </div>
         <h1>Trouve un playground à côté de chez toi !</h1>
     </header>
     <main>
         <div class="map-container">
-            <div id="map"></div>
-            <div class="search-container">
-                <button id="geoLocateButton"><i class="search-geoloc-icon" data-feather="compass"></i></button>
+            <div id="map" role="region" aria-label="Carte des playgrounds de basket"></div>
+            <div class="search-container" role="search">
+                <button id="geoLocateButton" aria-label="Localiser"><i class="search-geoloc-icon" data-feather="compass"></i></button>
                 <div class="input-container">
-                    <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList">
+                    <label for="locationInput" class="sr-only">Rechercher un playground</label>
+                    <input type="text" id="locationInput" placeholder="Entrez une ville ou un code postal" list="locationList" aria-autocomplete="list">
                     <div id="customDropdown" class="dropdown-content"></div>
                 </div>
             </div>
         </div>
-        </main>
-
+    </main>
 </body>
-
-
 </html>
