@@ -28,7 +28,9 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
         const basketballCourts = data.results.map(record => ({
             name: record.inst_nom,
             access: record.equip_acc_libre,
+            address: record.inst_adresse,
             cp: record.inst_cp,
+            city: record.inst_com_nom,
             latitude: record.coordonnees.lat,
             longitude: record.coordonnees.lon
         }));
@@ -57,14 +59,31 @@ function displayBasketballCourts(courts) {
         } else {
             accessText = 'Non renseigné';
         }
+
+        let addressText;
+        if (court.address === null) {
+            addressText = '';
+        } else {
+            addressText = court.address;
+        }
         // Ajouter un marqueur sur la carte pour chaque terrain de basket-ball
 
         const courtsContent = ` 
             <div class="courts-content">
                 <h2>${court.name}</h2>
+                <p><b>Adresse :</b> ${addressText}<br>
+                ${court.cp} ${court.city}</p>
                 <p><b>Accès Libre :</b> ${accessText}</p>
             </div>`;
-        const marker = L.marker([court.latitude, court.longitude])
+        const marker = L.icon({
+            iconUrl: 'docs/img/map-pin.svg',
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+
+        });
+        
+        L.marker([court.latitude, court.longitude], { icon: marker })
             .bindPopup(courtsContent)
             .addTo(map);
 
