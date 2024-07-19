@@ -1,8 +1,11 @@
 let courtsMarkers = [];
 
+// Function to fetch basketball courts from the API
 async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
     const url = 'https://equipements.sports.gouv.fr/api/explore/v2.1/catalog/datasets/data-es/records';
     const params = new URLSearchParams();
+    
+    // Define request parameters
     params.append('limit', 100);
     params.append('refine', 'equip_aps_nom:Basket-Ball');
     params.append('refine', 'equip_nature:Découvert');
@@ -10,17 +13,20 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
 
     try {
         const response = await fetch(`${url}?${params.toString()}`);
+        
+        // Check if the response is OK
         if (!response.ok) {
-            throw new Error(`Erreur HTTP! statut: ${response.status}`);
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        
         const data = await response.json();
 
-        // console.log(data);
-
+        // Check if the results property exists in the API response
         if (!data.results) {
-            throw new Error('La propriété records est indéfinie dans la réponse de l\'API.');
+            throw new Error('The results property is undefined in the API response.');
         }
 
+        // Map the API results to the required properties
         const basketballCourts = data.results.map(record => ({
             name: record.inst_nom,
             access: record.equip_acc_libre,
@@ -32,25 +38,33 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
         }));
 
         console.log(basketballCourts);
+        
+        // Display basketball courts on the map
         displayBasketballCourts(basketballCourts);
     } catch (error) {
-        console.error('Erreur lors de la récupération des terrains de basket-ball:', error);
+        console.error('Error fetching basketball courts:', error);
     }
 }
 
+// Function to display basketball courts on the map
 function displayBasketballCourts(courts) {
+    // Remove existing markers
     courtsMarkers.forEach(marker => map.removeLayer(marker));
     courtsMarkers = [];
+
+    // Add a marker for each basketball court
     courts.forEach(court => {
+        // Determine the access text
         let accessText;
         if (court.access === 'true') {
-            accessText = 'Oui';
+            accessText = 'Yes';
         } else if (court.access === 'false') {
-            accessText = 'Non';
+            accessText = 'No';
         } else {
-            accessText = 'Non renseigné';
+            accessText = 'Not specified';
         }
 
+        // Determine the address text
         let addressText;
         if (court.address === null) {
             addressText = '';
@@ -58,28 +72,34 @@ function displayBasketballCourts(courts) {
             addressText = court.address;
         }
 
+        // Create the popup content
         const courtsContent = ` 
             <div class="courts-content">
                 <h2>${court.name}</h2>
-                <p><b>Adresse :</b> ${addressText}<br>
+                <p><b>Address:</b> ${addressText}<br>
                 ${court.cp} ${court.city}</p>
-                <p><b>Accès Libre :</b> ${accessText}</p>
+                <p><b>Free Access:</b> ${accessText}</p>
             </div>`;
-        const marker = L.icon({
+
+        // Create a custom icon for the marker
+        const markerIcon = L.icon({
             iconUrl: 'docs/img/map-pin.svg',
             iconSize: [38, 95],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
         });
 
-        L.marker([court.latitude, court.longitude], { icon: marker })
+        // Add the marker to the map
+        const marker = L.marker([court.latitude, court.longitude], { icon: markerIcon })
             .bindPopup(courtsContent)
             .addTo(map);
 
+        // Add the marker to the list of markers
         courtsMarkers.push(marker);
     });
 }
 
+// Function to update basketball courts based on latitude and longitude
 function updateBasketballCourts(latitude, longitude) {
     getBasketballCourts(latitude, longitude);
 }
