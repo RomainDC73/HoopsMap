@@ -5,7 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (iconInfo) {
         iconInfo.addEventListener('click', (event) => {
-            // Ajouter ou supprimer la classe 'show' pour afficher ou cacher le bloc
             infoBlock.classList.toggle('show');
         });
     }

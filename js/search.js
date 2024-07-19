@@ -19,7 +19,7 @@ locationInput.addEventListener('input', function() {
           option.addEventListener('click', function() {
             locationInput.value = option.textContent;
             customDropdown.style.display = 'none';
-            searchLocation(locationInput.value); // Trigger search
+            searchLocation(locationInput.value); 
           });
           customDropdown.appendChild(option);
         });
@@ -58,6 +58,5 @@ document.addEventListener('click', function(event) {
 });
 
 function sanitizeInput(input) {
-  // Fonction de nettoyage basique, adaptée à vos besoins spécifiques
-  return input.replace(/[^\w\s,-]/gi, ''); // Retire tout caractère non-alphanumérique sauf espace, virgule et tiret
+  return input.replace(/[^\w\s,-]/gi, '');
 }

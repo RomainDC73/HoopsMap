@@ -14,16 +14,13 @@ function geolocate() {
         const { latitude, longitude } = position.coords;
         map.setView([latitude, longitude], 14);
 
-        // Ajouter un marqueur avec une icône personnalisée à la position géolocalisée
         const geolocMarker = L.marker([latitude, longitude], { icon: geolocIcon }).addTo(map);
         
-        // Optionnel : Ajouter un popup au marqueur
         geolocMarker.bindPopup("Vous êtes ici").openPopup();
 
         updateBasketballCourts(latitude, longitude);
-        locationInput.value = ''; // Effacer le champ d'entrée de localisation si nécessaire
+        locationInput.value = '';
 
-        // Mettre à jour les icônes Feather
         feather.replace();
 
         searchOrGeolocateTriggered = true;
