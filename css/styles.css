@@ -140,7 +140,7 @@ h1 {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 100%; /* Ajustez la taille selon vos besoins */
+  width: 100%;
   pointer-events: none; 
 }
 
@@ -169,7 +169,7 @@ main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  position: relative; /* Pour permettre le positionnement absolu des boutons */
+  position: relative;
 }
 
 .map-container {
@@ -189,15 +189,15 @@ main {
   align-items: center;
   justify-content: center;
   background-color: transparent;
-  color: var(--accent); /* Définir la couleur ici */
-  width: 50px; /* Taille de l'icône */
-  height: 50px; /* Taille de l'icône */
+  color: var(--accent);
+  width: 50px;
+  height: 50px;
 }
 
 .show-geoloc-icon svg {
-  fill: white; /* Fond blanc pour le SVG */
+  fill: white;
   box-sizing: border-box;
-  stroke-width: 2px; /* Épaisseur du trait */
+  stroke-width: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -209,22 +209,22 @@ main {
 }
 
 .search-label-container {
-  position: absolute; /* Position it absolutely to align it above the search container */
-  left: 35%; /* Center horizontally */
-  bottom: calc(15% + 3em); /* Position it above the search container */
-  transform: translateX(-50%); /* Center horizontally */
-  width: 60%; /* Same width as search-container */
-  z-index: 1000; /* Place it above the search container */
+  position: absolute; 
+  left: 35%; 
+  bottom: calc(15% + 3em); 
+  transform: translateX(-50%); 
+  width: 60%; 
+  z-index: 1000; 
 }
 
 .search-label {
   display: block;
-  font-size: 1rem; /* Adjust font size as needed */
-  color: #fff; /* White text color */
-  background-color: var(--accent); /* Background color from CSS variable */
-  padding: 0.5em 1em; /* Padding around the label text */
-  border-radius: 4px; /* Rounded corners for the background */
-  text-align: left; /* Align text to the left */
+  font-size: 1rem; 
+  color: #fff;
+  background-color: var(--accent);
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  text-align: left;
 }
 
 .search-container {
@@ -312,18 +312,15 @@ main {
   border-radius: 4px;
 }
 
-/* Tablettes et écrans plus grands */
 @media (min-width: 481px) {
   .info-block {
     width: 70%;
   }
 }
 
-/* Ordinateurs de bureau et écrans larges */
 @media (min-width: 769px) {
-  /* Ajoutez des styles spécifiques pour les écrans larges si nécessaire */
   h1 {
-    width: 50%; /* Exemple : réduction de la largeur pour tablettes */
+    width: 50%;
   }
 
   .info-block {
@@ -339,8 +336,8 @@ main {
   }
 
   .search-label-container {
-    left: 40%; /* Center horizontally */
-    width: 30%; /* Same width as search-container */
+    left: 40%;
+    width: 30%;
   }
 }
 
@@ -350,7 +347,7 @@ main {
   }
 
   .search-label-container {
-    left: 45%; /* Center horizontally */
-    width: 30%; /* Same width as search-container */
+    left: 45%;
+    width: 30%;
   }
 }
