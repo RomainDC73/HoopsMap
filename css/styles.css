@@ -115,7 +115,7 @@ h1 {
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: right 0.3s ease;
-  overflow-y: auto;
+  overflow-y: hidden;
   z-index: 2000;
 }
 
@@ -123,11 +123,17 @@ h1 {
   right: 0;
 }
 
+.info-block a {
+  color: var(--accent);
+}
+
 .info-container {
   display: flex;
   flex-direction: column;
   padding: 2em;
 }
+
+
 
 .info-footer img {
   opacity: 0.1;
@@ -155,8 +161,9 @@ h1 {
   margin-bottom: 0.5em;
 }
 
-.info-content a {
-  color: var(--accent);
+.info-footer-text {
+  padding: 2em;
+  margin-top: 5em;
 }
 
 main {
