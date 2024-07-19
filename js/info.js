@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeInfo = document.querySelector('.close-icon');
 
     if (iconInfo) {
-        iconInfo.addEventListener('click', (event) => {
+        iconInfo.addEventListener('click', () => {
             infoBlock.classList.toggle('show');
         });
     }
 
     if (closeInfo) {
-        closeInfo.addEventListener('click', (event) => {
+        closeInfo.addEventListener('click', () => {
             infoBlock.classList.remove('show');
         });
     }

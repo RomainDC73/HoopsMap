@@ -37,12 +37,11 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
         console.error('Erreur lors de la récupération des terrains de basket-ball:', error);
     }
 }
-function displayBasketballCourts(courts) {
 
+function displayBasketballCourts(courts) {
     courtsMarkers.forEach(marker => map.removeLayer(marker));
     courtsMarkers = [];
     courts.forEach(court => {
-
         let accessText;
         if (court.access === 'true') {
             accessText = 'Oui';
@@ -71,9 +70,8 @@ function displayBasketballCourts(courts) {
             iconSize: [38, 95],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
-
         });
-        
+
         L.marker([court.latitude, court.longitude], { icon: marker })
             .bindPopup(courtsContent)
             .addTo(map);
@@ -85,6 +83,3 @@ function displayBasketballCourts(courts) {
 function updateBasketballCourts(latitude, longitude) {
     getBasketballCourts(latitude, longitude);
 }
-
-
-

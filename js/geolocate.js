@@ -15,7 +15,6 @@ function geolocate() {
         map.setView([latitude, longitude], 14);
 
         const geolocMarker = L.marker([latitude, longitude], { icon: geolocIcon }).addTo(map);
-        
         geolocMarker.bindPopup("Vous êtes ici").openPopup();
 
         updateBasketballCourts(latitude, longitude);
@@ -24,13 +23,12 @@ function geolocate() {
         feather.replace();
 
         searchOrGeolocateTriggered = true;
-
       },
       error => {
-        if (error.code === 1){
-            alert("Vous avez refusé la géolocalisation. Vous pouvez activer la géolocalisation dans les paramètres de votre navigateur.");
+        if (error.code === 1) {
+          alert("Vous avez refusé la géolocalisation. Vous pouvez activer la géolocalisation dans les paramètres de votre navigateur.");
         } else {
-            console.error("Erreur de géolocalisation : ", error);
+          console.error("Erreur de géolocalisation : ", error);
         }
       }
     );
