@@ -119,7 +119,6 @@ h1 {
   z-index: 2000;
 }
 
-
 .info-block.show {
   right: 0;
 }
@@ -190,13 +189,17 @@ main {
 }
 
 .show-geoloc-icon svg {
-  background-color: white; /* Fond blanc pour le SVG */
-  border-radius: 50%; /* Pour arrondir le fond blanc */
+  fill: white; /* Fond blanc pour le SVG */
   box-sizing: border-box;
   stroke-width: 2px; /* Épaisseur du trait */
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.basketball-court-icon svg{
+  stroke: var(--accent);
+  fill: white;
 }
 
 .search-container {

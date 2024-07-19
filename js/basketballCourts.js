@@ -64,7 +64,15 @@ function displayBasketballCourts(courts) {
                 <h2>${court.name}</h2>
                 <p><b>Accès Libre :</b> ${accessText}</p>
             </div>`;
-        const marker = L.marker([court.latitude, court.longitude])
+        const marker = L.icon({
+            iconUrl: 'docs/img/map-pin.svg',
+            iconSize: [38, 95],
+            iconAnchor: [22, 94],
+            popupAnchor: [-3, -76],
+
+        });
+        
+        L.marker([court.latitude, court.longitude], { icon: marker })
             .bindPopup(courtsContent)
             .addTo(map);
 
