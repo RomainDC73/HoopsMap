@@ -1,11 +1,10 @@
 const geoLocateButton = document.getElementById('geoLocateButton');
 
-const geolocIcon = L.divIcon({
-  html: '<i data-feather="arrow-down-circle"></i>',
-  className: 'show-geoloc-icon', // Classe personnalisée pour styliser l'icône
+const geolocIcon = L.icon({
+  iconUrl: 'docs/img/arrow-down-circle.svg',
   iconSize: [38, 95],
   iconAnchor: [22, 94],
-  popupAnchor: [-3, -76], // Point de l'icône correspondant à la position du popup
+  popupAnchor: [-3, -76],
 });
 
 function geolocate() {
