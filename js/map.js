@@ -1,3 +1,5 @@
+let searchOrGeolocateTriggered = false;
+
 const map = L.map('map').setView([46.35546, 2.36225], 6);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1Ijoicm9tZGMiLCJhIjoiY2x5MnJ1NzJmMDBpeTJpczNnY3hmeWF3bCJ9.TXQcRxl8KOcll6zuEafSAA', {
@@ -16,8 +18,11 @@ function debounce(func, wait) {
 }
 
 function searchInThisArea() {
-  const center = map.getCenter();
-  updateBasketballCourts(center.lat, center.lng);
+  if (searchOrGeolocateTriggered) {
+    const center = map.getCenter();
+    updateBasketballCourts(center.lat, center.lng);
+    console.log('Recherche dans cette zone:', center);
+  }
 }
 
 const debouncedSearchInThisArea = debounce(searchInThisArea, 1000);

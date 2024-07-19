@@ -27,6 +27,8 @@ function geolocate() {
         // Mettre à jour les icônes Feather
         feather.replace();
 
+        searchOfGeolocateTriggered = true;
+
       },
       error => {
         if (error.code === 1){
