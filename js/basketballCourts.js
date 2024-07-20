@@ -57,11 +57,11 @@ function displayBasketballCourts(courts) {
         // Determine the access text
         let accessText;
         if (court.access === 'true') {
-            accessText = 'Yes';
+            accessText = 'Oui';
         } else if (court.access === 'false') {
-            accessText = 'No';
+            accessText = 'Non';
         } else {
-            accessText = 'Not specified';
+            accessText = 'Non précisé';
         }
 
         // Determine the address text
