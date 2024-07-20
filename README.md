@@ -16,9 +16,9 @@
 ## Technologies Used
 
 - **HTML/CSS/JavaScript**: Core web technologies for building the user interface.
-- **Leaflet**: A JavaScript library for interactive maps.
+- **OSM / Leaflet**: A JavaScript library for interactive maps.
 - **Feather Icons**: Simple and beautiful open-source icons.
-- **OpenStreetMap API**: For fetching playground locations based on search queries and geolocation.
+- **French Sports Ministry API**: For fetching playground locations based on search queries and geolocation.
 
 Created by Romain DI CANDIDO.
 
