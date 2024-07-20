@@ -76,9 +76,9 @@ function displayBasketballCourts(courts) {
         const courtsContent = ` 
             <div class="courts-content">
                 <h2>${court.name}</h2>
-                <p><b>Address:</b> ${addressText}<br>
+                <p><b>Addresse :</b> ${addressText}<br>
                 ${court.cp} ${court.city}</p>
-                <p><b>Free Access:</b> ${accessText}</p>
+                <p><b>Accès libre :</b> ${accessText}</p>
             </div>`;
 
         // Create a custom icon for the marker
