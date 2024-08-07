@@ -85,5 +85,5 @@ document.addEventListener('click', function(event) {
 
 // Function to sanitize user input, removing unwanted characters
 function sanitizeInput(input) {
-  return input.replace(/[^\w\s,-]/gi, '');
+  return input.replace(/[^\p{L}\p{N}\s,-]/gu, '');
 }
