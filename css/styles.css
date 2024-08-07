@@ -93,6 +93,7 @@ h1 {
   height: 30px;
   margin-top: 1.5em;
   margin-right: 1.5em;
+  cursor: pointer;
 }
 
 #logo {
@@ -110,12 +111,14 @@ h1 {
   position: fixed;
   top: 0;
   right: -100%;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: right 0.3s ease;
-  overflow-y: hidden;
+  overflow: hidden;
+  display: flex; 
+  flex-direction: column;
   z-index: 2000;
 }
 
@@ -128,9 +131,24 @@ h1 {
 }
 
 .info-container {
+  flex: 1; 
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   padding: 2em;
+}
+
+.info-header {
+  flex-shrink: 0;
+}
+
+.info-content {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.info-footer {
+  flex-shrink: 0;
 }
 
 .info-footer-logo {
@@ -148,6 +166,9 @@ h1 {
   color: var(--accent);
   width: 30px;
   height: 30px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 .info-header h2 {
@@ -164,6 +185,7 @@ h1 {
   padding: 2em;
   margin-top: 2em;
 }
+
 
 main {
   flex: 1;
