@@ -173,18 +173,12 @@ h1 {
 
 .info-header h2 {
   color: var(--accent);
-  margin-bottom: 1em;
 }
 
 .info-content p {
   margin-bottom: 0.5em;
 }
 
-.info-footer-text {
-  font-size: 0.9em;
-  padding: 2em;
-  margin-top: 2em;
-}
 
 
 main {
