@@ -101,9 +101,9 @@ function displayBasketballCourts(courts) {
         courtsMarkers.push(marker);
         
         // Reopen the popup if it was open previously
-        if (openPopupLatLng && openPopupLatLng.equals(marker.getLatLng())) {
-            marker.openPopup();
-        }
+        // if (openPopupLatLng && openPopupLatLng.equals(marker.getLatLng())) {
+        //     marker.openPopup();
+        // }
     });
 }
 
