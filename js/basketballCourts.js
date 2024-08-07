@@ -48,6 +48,14 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
 
 // Function to display basketball courts on the map
 function displayBasketballCourts(courts) {
+    // Store currently open popup if any
+    let openPopupLatLng = null;
+    map.eachLayer(layer => {
+        if (layer instanceof L.Marker && layer.isPopupOpen()) {
+            openPopupLatLng = layer.getLatLng();
+        }
+    });
+
     // Remove existing markers
     courtsMarkers.forEach(marker => map.removeLayer(marker));
     courtsMarkers = [];
@@ -65,12 +73,7 @@ function displayBasketballCourts(courts) {
         }
 
         // Determine the address text
-        let addressText;
-        if (court.address === null) {
-            addressText = '';
-        } else {
-            addressText = court.address;
-        }
+        let addressText = court.address === null ? '' : court.address;
 
         // Create the popup content
         const courtsContent = ` 
@@ -96,6 +99,11 @@ function displayBasketballCourts(courts) {
 
         // Add the marker to the list of markers
         courtsMarkers.push(marker);
+        
+        // Reopen the popup if it was open previously
+        if (openPopupLatLng && openPopupLatLng.equals(marker.getLatLng())) {
+            marker.openPopup();
+        }
     });
 }
 
