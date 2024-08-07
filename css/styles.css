@@ -116,7 +116,6 @@ h1 {
   background-color: white;
   box-shadow: -2px 0 5px rgba(0,0,0,0.2);
   transition: right 0.3s ease;
-  overflow: hidden;
   display: flex; 
   flex-direction: column;
   z-index: 2000;
@@ -134,7 +133,6 @@ h1 {
   flex: 1; 
   display: flex;
   flex-direction: column;
-  overflow: hidden;
   padding: 2em;
 }
 
@@ -144,7 +142,6 @@ h1 {
 
 .info-content {
   flex: 1;
-  overflow-y: auto;
 }
 
 .info-footer {
