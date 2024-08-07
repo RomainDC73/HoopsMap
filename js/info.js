@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (closeInfo) {
         // Add a click event listener to the 'close-icon' element
         closeInfo.addEventListener('click', () => {
+            event.stopPropagation();
             // Remove the 'show' class from the 'info-block' element to hide it
             infoBlock.classList.remove('show');
         });
@@ -30,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Add a click event listener to the entire document
     document.addEventListener('click', (event) => {
+        event.stopPropagation();
         // Check if the 'info-block' element is currently shown and the click event target is neither the 'info-icon' 
         // nor an element within the 'info-block'
         if (infoBlock.classList.contains('show') && event.target !== iconInfo && !infoBlock.contains(event.target)) {
