@@ -37,7 +37,7 @@ async function getBasketballCourts(latitude = 46.35546, longitude = 2.36225) {
             longitude: record.coordonnees.lon
         }));
 
-        console.log(basketballCourts);
+        // console.log(basketballCourts);
         
         // Display basketball courts on the map
         displayBasketballCourts(basketballCourts);

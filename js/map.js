@@ -36,7 +36,7 @@ function searchInThisArea() {
     // Update the display of basketball courts based on the center coordinates
     updateBasketballCourts(center.lat, center.lng);
     // Log the center coordinates for debugging
-    console.log('Recherche dans cette zone:', center);
+    // console.log('Recherche dans cette zone:', center);
   }
 }
 
