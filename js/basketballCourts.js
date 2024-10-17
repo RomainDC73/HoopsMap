@@ -92,6 +92,13 @@ function displayBasketballCourts(courts) {
             popupAnchor: [-3, -76],
         });
 
+        // Change marker depending on access
+        if (court.access === 'true') {
+            markerIcon.options.iconUrl = 'docs/img/map-pin-green.svg';
+        } else if (court.access === 'false') {
+            markerIcon.options.iconUrl = 'docs/img/map-pin-red.svg';
+        }
+
         // Add the marker to the map
         const marker = L.marker([court.latitude, court.longitude], { icon: markerIcon })
             .bindPopup(courtsContent)
